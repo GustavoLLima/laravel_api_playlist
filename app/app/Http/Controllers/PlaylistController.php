@@ -16,7 +16,8 @@ class PlaylistController extends Controller
     public function index()
     {
         //
-        $playlists = Playlist::paginate(10);
+        //$playlists = Playlist::paginate(10);
+        $playlists = Playlist::with('contents')->paginate(10);
         return PlaylistResource::collection($playlists);
     }
 

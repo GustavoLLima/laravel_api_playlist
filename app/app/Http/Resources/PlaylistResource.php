@@ -19,7 +19,8 @@ class PlaylistResource extends JsonResource
           'id' => $this->id,
           'title' => $this->title,
           'description' => $this->description,
-          'author' => $this->author
+          'author' => $this->author,
+          'contents' => ContentResource::collection($this->contents)
         ];
     }
 }

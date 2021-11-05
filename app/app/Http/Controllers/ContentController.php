@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Content;
-use Illuminate\Http\Request;
 use App\Http\Resources\ContentResource;
+use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
@@ -16,8 +16,8 @@ class ContentController extends Controller
     public function index()
     {
         //
-        // $contents = Content::paginate(10);
-        $contents = Content::with('playlist')->paginate(10);
+        $contents = Content::paginate(10);
+        //$contents = Content::with('playlist')->paginate(10);
         return ContentResource::collection($contents);
     }
 
