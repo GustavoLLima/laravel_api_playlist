@@ -9,7 +9,7 @@ services:
         run https://www.getpostman.com/collections/f4647fd6257e8af43303
         --folder "Environment Variables Example"
         -r html,cli
-        --reporter-html-export /etc/newman/reports/Main_Report.html
+        --reporter-html-export reports/Main_Report.html
       volumes:
         - ./postman:/etc/newman
     db2:
@@ -20,17 +20,17 @@ services:
             dockerfile: Dockerfile
         environment:
             MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-            MYSQL_DATABASE: MYSQL_DATABASE
+            MYSQL_DATABASE: MYSQL_DATABASE2
             MYSQL_USER: MYSQL_USER
             MYSQL_PASSWORD: MYSQL_PASSWORD
-        #optional: keep db information
+        #optional: keep db2 information
         # volumes:
-        #     - ./db/store_db:/var/lib/mysql
+        #     - ./db2/store_db2:/var/lib/mysql
         ports:
             - "9906:3306"
-    phpmyadmin2:
+    phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin2
+        container_name: phpmyadmin
         ports:
             - '8080:80'
         restart: always
@@ -38,8 +38,8 @@ services:
             PMA_HOST: db2
         depends_on:
             - db2
-    php-apache3:
-        container_name: php-apache3
+    php-apache2:
+        container_name: php-apache2
         build:
           context: ./php
         ports:

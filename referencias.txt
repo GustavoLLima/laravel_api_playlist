@@ -1,3 +1,6 @@
+https://terminalroot.com.br/2021/04/como-criar-uma-api-com-laravel-8.html
+
+
 json/ajax:
 
 https://cursos.alura.com.br/forum/topico-como-utilizar-o-ajax-no-laravel-32577
