@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function(){
 	Route::apiResource('playlists', PlaylistController::class);
+});
+
+Route::prefix('v1')->group(function(){
+	Route::apiResource('contents', ContentController::class);
 });
 
 

@@ -1,17 +1,17 @@
 version: '3.8'
 services:
-    postman_collection:
-      container_name: postman_docker_container
-      build:
-        context: ./postman
-        dockerfile: Dockerfile
-      command:
-        run https://www.getpostman.com/collections/f4647fd6257e8af43303
-        --folder "Environment Variables Example"
-        -r html,cli
-        --reporter-html-export reports/Main_Report.html
-      volumes:
-        - ./postman:/etc/newman
+    # postman_collection:
+    #   container_name: postman_docker_container
+    #   build:
+    #     context: ./postman
+    #     dockerfile: Dockerfile
+    #   command:
+    #     run https://www.getpostman.com/collections/f4647fd6257e8af43303
+    #     --folder "Environment Variables Example"
+    #     -r html,cli
+    #     --reporter-html-export reports/Main_Report.html
+    #   volumes:
+    #     - ./postman:/etc/newman
     db2:
         container_name: db2
         restart: always

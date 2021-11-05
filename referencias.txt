@@ -1,3 +1,17 @@
+pra criar:
+migrations, adiciona campos, migra
+
+php artisan make:creations create_contents_table --create=contents
+
+php artisan migrate
+
+php artisan make:controller ContentController --resource --model=Content
+
+adiciona resource no controller
+adiciona na rota
+
+php artisan make:resource ContentResource
+
 https://terminalroot.com.br/2021/04/como-criar-uma-api-com-laravel-8.html
 
 
