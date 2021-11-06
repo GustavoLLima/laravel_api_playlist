@@ -1,3 +1,5 @@
+https://auth0.com/blog/testing-laravel-apis-with-phpunit/
+
 pra criar:
 migrations, adiciona campos, migra
 
