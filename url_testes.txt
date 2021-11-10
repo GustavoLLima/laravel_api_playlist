@@ -1,3 +1,18 @@
+https://www.youtube.com/watch?v=UjA-16diixc
+
+./vendor/bin/phpunit
+
+php artisan test
+
+novo teste começa em 8:17
+
+docker-compose exec php-apache2 php artisan make:test APITest --unit
+
+
+
+
+
+
 ok - 1, 2, 3, 4, 5, 6, 7, 8, 9
 
 index, GET
