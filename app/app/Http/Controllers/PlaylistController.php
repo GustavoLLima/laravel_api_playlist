@@ -40,6 +40,12 @@ class PlaylistController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required|max:100',
+            'author' => 'required|max:150',
+            'description' => 'max:200'
+        ]);
+
         $playlist = new Playlist;
         $playlist->title = $request->title;
         $playlist->description = $request->description;
@@ -84,6 +90,12 @@ class PlaylistController extends Controller
     public function update(Request $request, $playlist_id)
     {
         //
+        $request->validate([
+            'title' => 'required|max:100',
+            'author' => 'required|max:150',
+            'description' => 'max:200'
+        ]);
+
         $playlist = Playlist::findOrFail( $playlist_id );
         $playlist->title = $request->title;
         $playlist->description = $request->description;

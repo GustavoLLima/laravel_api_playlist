@@ -40,6 +40,13 @@ class ContentController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'playlist_id' => 'required',
+            'title' => 'required|max:150',
+            'url' => 'required|max:255',
+            'author' => 'max:150'
+        ]);
+
         $content = new Content;
         $content->playlist_id = $request->playlist_id;
         $content->title = $request->title;
@@ -85,6 +92,13 @@ class ContentController extends Controller
     public function update(Request $request, $content_id)
     {
         //
+        $request->validate([
+            'playlist_id' => 'required',
+            'title' => 'required|max:150',
+            'url' => 'required|max:255',
+            'author' => 'max:150'
+        ]);
+
         $content = Content::findOrFail( $content_id );
         $content->playlist_id = $request->playlist_id;
         $content->title = $request->title;

@@ -15,7 +15,7 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('playlist_id')->constrained('playlists');
+            $table->foreignId('playlist_id')->constrained('playlists')->onDelete('cascade')->Update('cascade');
             $table->string('title', 150);
             $table->string('url', 255);
             $table->string('author', 150)->nullable();
