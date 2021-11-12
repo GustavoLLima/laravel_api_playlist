@@ -42,7 +42,7 @@ class ListPlaylistTest extends TestCase
 
         $playlists = Playlist::all();
         $this->assertCount(1, $playlists);
-        
+
         $response = $this->get('/api/v1/playlists');
 
         $response->assertStatus(200);
@@ -88,5 +88,29 @@ class ListPlaylistTest extends TestCase
         //         "to" => null,
         //         "total" => 0
         //     ]]);
+    }
+
+    public function test_playlists_pagination()
+    {
+        for ($i=1; $i < 15 ; $i++) { 
+            $response = $this->post('/api/v1/playlists',[
+            'title' => 'Test Title',
+            'description' => 'Test Description',
+            'author' => 'Test Author'
+        ]);
+
+            $playlists = Playlist::all();
+            $this->assertCount($i, $playlists);
+        }
+        
+        $response = $this->get('/api/v1/playlists');
+
+        //dd($response);
+
+        $this->assertCount(10, $response['data']);
+
+        $response = $this->get('/api/v1/playlists?page=2');
+
+        $this->assertCount(4, $response['data']);
     }
 }

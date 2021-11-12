@@ -100,4 +100,37 @@ class ListContentTest extends TestCase
         //         "total" => 0
         //     ]]);
     }
+
+    public function test_contents_pagination()
+    {
+        $response = $this->post('/api/v1/playlists',[
+            'title' => 'Test Title',
+            'description' => 'Test Description',
+            'author' => 'Test Author'
+        ]);
+
+        $playlists = Playlist::first();
+
+        for ($i=1; $i < 15 ; $i++) { 
+            $response = $this->post('/api/v1/contents',[
+                'title' => 'Test Title',
+                'url' => 'Test Url',
+                'author' => 'Test Author',
+                'playlist_id' => $playlists->id
+            ]);
+
+            $contents = Content::all();
+            $this->assertCount($i, $contents);
+        }
+        
+        $response = $this->get('/api/v1/contents');
+
+        //dd($response);
+
+        $this->assertCount(10, $response['data']);
+
+        $response = $this->get('/api/v1/contents?page=2');
+
+        $this->assertCount(4, $response['data']);
+    }
 }
