@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "PLaylists/Content's API",
+        "title": "Playlists/Content's API",
         "version": "0.1"
     },
     "servers": [
