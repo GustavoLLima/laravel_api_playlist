@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=tF-_OJpsRmw
+
 php artisan l5-swagger:generate
 
 https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration#after-the-annotiations-have-been-added-you-can-run-php-artisan-l5-swaggergenerate-to-generate-the-documentation
