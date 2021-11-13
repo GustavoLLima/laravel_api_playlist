@@ -1,3 +1,11 @@
+php artisan l5-swagger:generate
+
+https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration#after-the-annotiations-have-been-added-you-can-run-php-artisan-l5-swaggergenerate-to-generate-the-documentation
+
+https://editor.swagger.io/
+
+https://www.youtube.com/watch?v=6NQYHMHKluA
+
 https://auth0.com/blog/testing-laravel-apis-with-phpunit/
 
 pra criar:

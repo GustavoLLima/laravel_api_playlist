@@ -13,6 +13,28 @@ class PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\Get(
+
+    *  path="/playlists",
+
+    *  tags={"Playlists"},
+
+    *  operationId="accountValidate",
+
+    *  summary="Playlist List",
+
+    *  @OA\Response(response="200",
+
+    *    description="List of Playlists",
+
+    *  )
+
+    * )
+
+    */
+
     public function index()
     {
         //
@@ -37,6 +59,58 @@ class PlaylistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\Post(
+
+    *  path="/playlists",
+
+    *  tags={"Playlists"},
+
+    *  operationId="accountValidate",
+
+    *  summary="Playlist Creation",
+
+    *  @OA\Parameter(name="title",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="description",
+
+    *    in="query",
+
+    *    required=false,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="author",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Response(response="201",
+
+    *    description="Playlist created",
+
+    *  )
+
+    * )
+
+    */
+
     public function store(Request $request)
     {
         //
@@ -75,6 +149,7 @@ class PlaylistController extends Controller
      * @param  \App\Models\Playlist  $playlist
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Playlist $playlist)
     {
         //
@@ -87,6 +162,74 @@ class PlaylistController extends Controller
      * @param  \App\Models\Playlist  $playlist
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\Put(
+
+    *  path="/playlists/{playlist}",
+
+    *  tags={"Playlists"},
+
+    *  operationId="playlist_id",
+
+    *  summary="Playlist Creation",
+
+    *  @OA\Parameter(name="title",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="description",
+
+    *    in="query",
+
+    *    required=false,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="author",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="playlist",
+
+    *    in="path",
+
+    *    required=true,
+
+    *    @OA\Schema(type="integer")
+
+    *  ),
+
+    *  @OA\Response(response="201",
+
+    *    description="Playlist Updated",
+
+    *  ),
+
+    *  @OA\Response(response="404",
+
+    *    description="Playlist not found",
+
+    *  )
+
+    * )
+
+    */
+
     public function update(Request $request, $playlist_id)
     {
         //
@@ -115,6 +258,44 @@ class PlaylistController extends Controller
      * @param  \App\Models\Playlist  $playlist
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\delete(
+
+    *  path="/playlists/{playlist}",
+
+    *  tags={"Playlists"},
+
+    *  operationId="playlist_id",
+
+    *  summary="Playlist Delete",
+
+    *  @OA\Parameter(name="playlist",
+
+    *    in="path",
+
+    *    required=true,
+
+    *    @OA\Schema(type="integer")
+
+    *  ),
+
+    *  @OA\Response(response="200",
+
+    *    description="Playlist Deleted",
+
+    *  ),
+
+    *  @OA\Response(response="404",
+
+    *    description="Playlist not found",
+
+    *  )
+
+    * )
+
+    */
+
     public function destroy($id)
     {
         //
