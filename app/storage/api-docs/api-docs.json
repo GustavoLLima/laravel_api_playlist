@@ -10,6 +10,150 @@
         }
     ],
     "paths": {
+        "/contents": {
+            "get": {
+                "tags": [
+                    "Contents"
+                ],
+                "summary": "Content List",
+                "operationId": "accountValidate",
+                "responses": {
+                    "200": {
+                        "description": "List of Contents"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contents"
+                ],
+                "summary": "Contents Creation",
+                "operationId": "accountValidate",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "author",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "playlist_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Content created"
+                    }
+                }
+            }
+        },
+        "/contents/{content}": {
+            "put": {
+                "tags": [
+                    "Contents"
+                ],
+                "summary": "Content Update",
+                "operationId": "content_id",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "author",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "playlist_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Content Updated"
+                    },
+                    "404": {
+                        "description": "Content not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contents"
+                ],
+                "summary": "Content Delete",
+                "operationId": "content_id",
+                "parameters": [
+                    {
+                        "name": "content",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Content Deleted"
+                    },
+                    "404": {
+                        "description": "Content not found"
+                    }
+                }
+            }
+        },
         "/playlists": {
             "get": {
                 "tags": [
@@ -67,7 +211,7 @@
                 "tags": [
                     "Playlists"
                 ],
-                "summary": "Playlist Creation",
+                "summary": "Playlist Update",
                 "operationId": "playlist_id",
                 "parameters": [
                     {
@@ -130,7 +274,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Playlist Updated"
+                        "description": "Playlist Deleted"
                     },
                     "404": {
                         "description": "Playlist not found"

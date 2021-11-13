@@ -13,6 +13,28 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\Get(
+
+    *  path="/contents",
+
+    *  tags={"Contents"},
+
+    *  operationId="accountValidate",
+
+    *  summary="Content List",
+
+    *  @OA\Response(response="200",
+
+    *    description="List of Contents",
+
+    *  )
+
+    * )
+
+    */
+
     public function index()
     {
         //
@@ -37,6 +59,75 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+    * @OA\Post(
+
+    *  path="/contents",
+
+    *  tags={"Contents"},
+
+    *  operationId="accountValidate",
+
+    *  summary="Contents Creation",
+
+    *  @OA\Parameter(name="title",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="url",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="author",
+
+    *    in="query",
+
+    *    required=false,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="playlist_id",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="integer")
+
+    *  ),
+
+    *  @OA\Response(response="201",
+
+    *    description="Content created",
+
+    *  )
+
+    * )
+
+    */
+
     public function store(Request $request)
     {
         //
@@ -89,6 +180,84 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\Put(
+
+    *  path="/contents/{content}",
+
+    *  tags={"Contents"},
+
+    *  operationId="content_id",
+
+    *  summary="Content Update",
+
+    *  @OA\Parameter(name="title",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="url",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="author",
+
+    *    in="query",
+
+    *    required=false,
+
+    *    @OA\Schema(type="string")
+
+    *  ),
+
+    *  @OA\Parameter(name="content",
+
+    *    in="path",
+
+    *    required=true,
+
+    *    @OA\Schema(type="integer")
+
+    *  ),
+
+    *  @OA\Parameter(name="playlist_id",
+
+    *    in="query",
+
+    *    required=true,
+
+    *    @OA\Schema(type="integer")
+
+    *  ),
+
+    *  @OA\Response(response="201",
+
+    *    description="Content Updated",
+
+    *  ),
+
+    *  @OA\Response(response="404",
+
+    *    description="Content not found",
+
+    *  )
+
+    * )
+
+    */
+
     public function update(Request $request, $content_id)
     {
         //
@@ -119,6 +288,44 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
+
+    /**
+    * @OA\delete(
+
+    *  path="/contents/{content}",
+
+    *  tags={"Contents"},
+
+    *  operationId="content_id",
+
+    *  summary="Content Delete",
+
+    *  @OA\Parameter(name="content",
+
+    *    in="path",
+
+    *    required=true,
+
+    *    @OA\Schema(type="integer")
+
+    *  ),
+
+    *  @OA\Response(response="200",
+
+    *    description="Content Deleted",
+
+    *  ),
+
+    *  @OA\Response(response="404",
+
+    *    description="Content not found",
+
+    *  )
+
+    * )
+
+    */
+
     public function destroy($id)
     {
         //

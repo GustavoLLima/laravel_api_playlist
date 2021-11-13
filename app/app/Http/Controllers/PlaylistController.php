@@ -172,7 +172,7 @@ class PlaylistController extends Controller
 
     *  operationId="playlist_id",
 
-    *  summary="Playlist Creation",
+    *  summary="Playlist Update",
 
     *  @OA\Parameter(name="title",
 
