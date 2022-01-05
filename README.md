@@ -1,8 +1,8 @@
 Projeto de estudo para montar uma API no laravel8, utilizando infra montada no Docker
 
-Ao baixar o projeto:
+Para executar o projeto:
 
-1 - Clonar o projeto.
+1 - Clonar o projeto e abrir a pasta.
 
 (OPCIONAL) - Alterar o arquivo docker-compose.yml (Esse passo é opcional, necessário apenas se alguma das portas que os containers usam já estiver sendo utilizado por outra aplicação. Também é possível alterar o nome dos containers)
 
