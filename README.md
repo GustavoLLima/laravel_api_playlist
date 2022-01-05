@@ -45,18 +45,21 @@ php artisan route:cache
 php artisan migrate
 ```
 
-O projeto estará disponível na máquina host, através do endereço:
+O projeto estará disponível na máquina host. A home do Laravel estará disponível em:
 
 http://localhost/
 
-A home está em:
+A documentação da API, desenvolvida no Swagger, pode ser acessada em:
 
-http://localhost/dashboard
+http://localhost/api/documentation
 
-Para acessar as páginas internas, é necessário realizar um cadastro, feito em:
+As rotas podem ser acessadas pelo Postman ou qualquer outra ferramenta de teste de API, através das rotas indicadas na documentação.
 
-http://localhost/register
+Os testes já montados para a API podem ser executados através do comando (novamente, através de um bash interativo no container do servidor web):
+```
+php artisan test
+```
 
 Caso for aproveitar a estrutura, mas montar um projeto do zero, usar:
-- docker-compose exec php-apache3 composer create-project laravel/laravel nome
-- docker-compose exec php-apache3 chmod -R 777 storage
+- docker-compose exec php-apache composer create-project laravel/laravel nome
+- docker-compose exec php-apache chmod -R 777 storage
