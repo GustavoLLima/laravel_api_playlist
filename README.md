@@ -8,7 +8,7 @@ Ao baixar o projeto, verificar:
 
 3 - Executar os seguintes comandos no container que roda o apache, através do comando docker-compose exec nome_do_container comando (na opção padrão é o php-apache, logo, todos os comandos começam com docker-compose exec php-apache3 comando):
 
-- compose install
+- composer install
 
 - php artisan migrate
 
