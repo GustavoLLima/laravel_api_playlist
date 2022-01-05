@@ -1,4 +1,14 @@
-Projeto de estudo para montar uma API no laravel8, utilizando infra montada no Docker
+Projeto de estudo para montar uma API no Laravel8, utilizando infra montada no Docker. A API trata de um cadastro de conteúdos e playlist, onde no fluxo padrão é criada uma playlist e existem conteúdos relacionados à playlist.
+
+A estrutura das pastas é a seguinte:
+
+- apache - Contém o arquivo de configuração do servidor web utilizado para rodar o Laravel.
+- app - Pasta que contém o projeto a ser executado, nesse caso, o Laravel.
+- db - Contém o Dockerfile referente ao container do banco de dados. Nesse projeto foi utilizado o MySQL.
+- php - Contém o Dockerfile referente ao container do servidor web. Esta estrutura usa o apache.
+- postman - Embora não seja utilizado, o projeto está preparado para ter um container do postman, biblioteca utilizada para testes da API. Recomenda-se a utilização do postman com GUI rodando no host, uma vez que a porta do servidor web é exposta ao host (porta 80).
+
+Além das pastas, o docker-compose.yml está na raíz do projeto. Nesse arquivo é possível ver como o projeto foi estruturado no Docker. Toda a configuração das portas de uso (80 para o servidor web, 8080 para o SGBD phpmyadmin e 3306 para o db) é feita nesse arquivo. É necessário verificar se as portas não irão entrar em conflito por outros projetos que já estejam sendo executado no host. Também é possível alterar o nome dos containers nesse arquivo. É recomendado ter cuidado ao alterar esse arquivo, tanto no nome dos containers quanto nas portas, pois esses dados são utilizados em várias prates do sistema. Por exemplo, o laravel usa o nome do container do banco de dados (db) para conectar.
 
 Para executar o projeto:
 
