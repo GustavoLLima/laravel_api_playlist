@@ -70,6 +70,11 @@ Os testes já montados para a API podem ser executados através do comando (nova
 php artisan test
 ```
 
+O projeto conta com arquivos de seed para popular o banco, caso o usuário queira testar a API sem inserir dados (ATENÇÃO: a versão inicial dos testes funciona apenas com o banco vazio, ao usar o seed, os testes não irão passar). A inserção é feita através do comando:
+```
+php artisan db:seed
+```
+
 Caso for aproveitar a estrutura, mas montar um projeto do zero, usar:
 - docker-compose exec php-apache composer create-project laravel/laravel nome
 - docker-compose exec php-apache chmod -R 777 storage
