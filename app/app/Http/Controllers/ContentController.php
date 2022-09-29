@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Content;
+use App\Models\Playlist;
 use App\Http\Resources\ContentResource;
 use Illuminate\Http\Request;
 
@@ -118,11 +119,15 @@ class ContentController extends Controller
 
     *  ),
 
-    *  @OA\Response(response="201",
+    *  @OA\Response(response="200",
 
     *    description="Content created",
 
-    *  )
+    *  ),
+
+    *  @OA\Response(response="404",
+    *    description="Playlist not found",
+    *  ),
 
     * )
 
@@ -138,6 +143,13 @@ class ContentController extends Controller
             'author' => 'max:150'
         ]);
 
+        $playlist = Playlist::where('id', '=', $request->playlist_id)->first();
+        if ($playlist === null) {
+            return response()->json([
+                'message' => 'Playlist not found',
+            ], 404);
+        }
+
         $content = new Content;
         $content->playlist_id = $request->playlist_id;
         $content->title = $request->title;
@@ -145,7 +157,7 @@ class ContentController extends Controller
         $content->author = $request->author;
 
         if( $content->save() ){
-            return new ContentResource( $content );
+            return response()->json(new ContentResource( $content ), 200);
         }
     }
 
@@ -158,7 +170,14 @@ class ContentController extends Controller
     public function show($id)
     {
         //
-        $content = Content::findOrFail( $id );
+        // $content = Content::findOrFail( $id );
+
+        $content = Content::where('id', '=', $id)->first();
+        if ($content === null) {
+            return response()->json([
+                'message' => 'Content not found',
+            ], 404);
+        }
         return new ContentResource( $content );
     }
 
@@ -242,7 +261,7 @@ class ContentController extends Controller
 
     *  ),
 
-    *  @OA\Response(response="201",
+    *  @OA\Response(response="200",
 
     *    description="Content Updated",
 
@@ -250,7 +269,7 @@ class ContentController extends Controller
 
     *  @OA\Response(response="404",
 
-    *    description="Content not found",
+    *    description="Content or Playlist not found",
 
     *  )
 
@@ -268,7 +287,20 @@ class ContentController extends Controller
             'author' => 'max:150'
         ]);
 
-        $content = Content::findOrFail( $content_id );
+        $playlist = Playlist::where('id', '=', $request->playlist_id)->first();
+        if ($playlist === null) {
+            return response()->json([
+                'message' => 'Playlist not found',
+            ], 404);
+        }
+
+        // $content = Content::findOrFail( $content_id );
+        $content = Content::where('id', '=', $content_id)->first();
+        if ($content === null) {
+            return response()->json([
+                'message' => 'Content not found',
+            ], 404);
+        }
         $content->playlist_id = $request->playlist_id;
         $content->title = $request->title;
         $content->url = $request->url;
@@ -278,7 +310,8 @@ class ContentController extends Controller
 
         if( $content->save() ){
             // dd($content);
-            return new ContentResource( $content );
+            // return new ContentResource( $content );
+            return response()->json(new ContentResource( $content ), 200);
         }
     }
 
@@ -329,9 +362,16 @@ class ContentController extends Controller
     public function destroy($id)
     {
         //
-        $content = Content::findOrFail( $id );
+        // $content = Content::findOrFail( $id );
+        $content = Content::where('id', '=', $id)->first();
+        if ($content === null) {
+            return response()->json([
+                'message' => 'Content not found',
+            ], 404);
+        }
         if( $content->delete() ){
-          return new ContentResource( $content );
+          // return new ContentResource( $content );
+          return response()->json(new ContentResource( $content ), 200);
         }
     }
 }

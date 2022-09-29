@@ -30,13 +30,13 @@ ps: Se for no windows, pode necessário adicionar a pasta no "file sharing resou
 docker exec -it php-apache /bin/bash
 ```
 
-4 - Uma vez que a estrutura esteja montada, instalar os pacotes necessários para rodar o projeto:
+4 - Com a estrutura esteja montada, dentro do terminal, é necessário instalar os pacotes necessários para rodar o projeto:
 
 ```
 composer install
 ```
 
-5 - Gerar o arquivo .env (pode ser copiando o example: cp .env.example .env) e alterar essas linhas:
+5 - Na pasta do projeto Laravel (/app), gerar o arquivo .env (pode ser copiando o example: cp .env.example .env) e alterar essas linhas:
 
 ```
 DB_CONNECTION=mysql
@@ -47,7 +47,7 @@ DB_USERNAME=MYSQL_USER
 DB_PASSWORD=MYSQL_PASSWORD
 ```
 
-6 - Gerar uma chave de segurança para o Laravel, limpar o cache das rotas e executar o migrate com seed para montar o banco e popular a tabela:
+6 - Ainda no terminal, gerar uma chave de segurança para o Laravel, limpar o cache das rotas e executar o migrate com seed para montar o banco e popular a tabela:
 
 ```
 php artisan key:generate
@@ -68,6 +68,11 @@ As rotas podem ser acessadas pelo Postman ou qualquer outra ferramenta de teste 
 Os testes já montados para a API podem ser executados através do comando (novamente, através de um bash interativo no container do servidor web):
 ```
 php artisan test
+```
+
+No caso de alteração na API, para refletir tais alterações na documentação, executar este comando dentro do terminal que acessa o projeto:
+```
+php artisan l5-swagger:generate
 ```
 
 O projeto conta com arquivos de seed para popular o banco, caso o usuário queira testar a API sem inserir dados (ATENÇÃO: a versão inicial dos testes funciona apenas com o banco vazio, ao usar o seed, os testes não irão passar). A inserção é feita através do comando:

@@ -101,7 +101,7 @@ class PlaylistController extends Controller
 
     *  ),
 
-    *  @OA\Response(response="201",
+    *  @OA\Response(response="200",
 
     *    description="Playlist created",
 
@@ -126,7 +126,8 @@ class PlaylistController extends Controller
         $playlist->author = $request->author;
 
         if( $playlist->save() ){
-            return new PlaylistResource( $playlist );
+            // return new PlaylistResource( $playlist );
+            return response()->json(new PlaylistResource( $playlist ), 200);
         }
     }
 
@@ -139,7 +140,13 @@ class PlaylistController extends Controller
     public function show($id)
     {
         //
-        $playlist = Playlist::findOrFail( $id );
+        // $playlist = Playlist::findOrFail( $id );
+        $playlist = Playlist::where('id', '=', $id)->first();
+        if ($playlist === null) {
+            return response()->json([
+                'message' => 'Playlist not found',
+            ], 404);
+        }
         return new PlaylistResource( $playlist );
     }
 
@@ -214,7 +221,7 @@ class PlaylistController extends Controller
 
     *  ),
 
-    *  @OA\Response(response="201",
+    *  @OA\Response(response="200",
 
     *    description="Playlist Updated",
 
@@ -239,7 +246,13 @@ class PlaylistController extends Controller
             'description' => 'max:200'
         ]);
 
-        $playlist = Playlist::findOrFail( $playlist_id );
+        // $playlist = Playlist::findOrFail( $playlist_id );
+        $playlist = Playlist::where('id', '=', $playlist_id)->first();
+        if ($playlist === null) {
+            return response()->json([
+                'message' => 'Playlist not found',
+            ], 404);
+        }
         $playlist->title = $request->title;
         $playlist->description = $request->description;
         $playlist->author = $request->author;
@@ -248,7 +261,8 @@ class PlaylistController extends Controller
 
         if( $playlist->save() ){
             // dd($playlist);
-            return new PlaylistResource( $playlist );
+            // return new PlaylistResource( $playlist );
+            return response()->json(new PlaylistResource( $playlist ), 200);
         }
     }
 
@@ -299,9 +313,16 @@ class PlaylistController extends Controller
     public function destroy($id)
     {
         //
-        $playlist = Playlist::findOrFail( $id );
+        // $playlist = Playlist::findOrFail( $id );
+        $playlist = Playlist::where('id', '=', $id)->first();
+        if ($playlist === null) {
+            return response()->json([
+                'message' => 'Playlist not found',
+            ], 404);
+        }
         if( $playlist->delete() ){
-          return new PlaylistResource( $playlist );
+          // return new PlaylistResource( $playlist );
+            return response()->json(new PlaylistResource( $playlist ), 200);
         }
     }
 }
