@@ -1,4 +1,4 @@
-Projeto de estudo para montar uma API no Laravel8, utilizando infra montada no Docker. A API trata de um cadastro de conteúdos e playlist, onde no fluxo padrão é criada uma playlist e existem conteúdos relacionados à playlist.
+Projeto de API Restful utilizando Laravel8, utilizando infra própria montada no Docker. A API trata de um cadastro de conteúdos e playlist, onde no fluxo padrão é criada uma playlist e existem conteúdos relacionados à playlist.
 
 A estrutura das pastas é a seguinte:
 
