@@ -1,4 +1,4 @@
-Projeto de API Restful utilizando Laravel8, utilizando infra própria montada no Docker. A API trata de um cadastro de conteúdos e playlist, onde no fluxo padrão é criada uma playlist e existem conteúdos relacionados à playlist.
+Projeto de API Restful utilizando Laravel8, utilizando infra própria montada no Docker. A API foi feita para criação de Playlists. Cada Playlist possui um título, uma descrição e o nome do autor, além de poder ter uma lista de conteúdos. Cada conteúdo possui um título, uma url e o nome do autor.
 
 A estrutura das pastas é a seguinte:
 
