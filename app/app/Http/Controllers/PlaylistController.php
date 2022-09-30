@@ -101,7 +101,7 @@ class PlaylistController extends Controller
 
     *  ),
 
-    *  @OA\Response(response="200",
+    *  @OA\Response(response="201",
 
     *    description="Playlist created",
 
@@ -127,7 +127,7 @@ class PlaylistController extends Controller
 
         if( $playlist->save() ){
             // return new PlaylistResource( $playlist );
-            return response()->json(new PlaylistResource( $playlist ), 200);
+            return response()->json(new PlaylistResource( $playlist ), 201);
         }
     }
 

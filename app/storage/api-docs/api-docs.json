@@ -64,7 +64,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "Content created"
                     },
                     "404": {
@@ -203,7 +203,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "Playlist created"
                     }
                 }

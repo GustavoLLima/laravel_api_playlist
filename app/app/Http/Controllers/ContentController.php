@@ -119,7 +119,7 @@ class ContentController extends Controller
 
     *  ),
 
-    *  @OA\Response(response="200",
+    *  @OA\Response(response="201",
 
     *    description="Content created",
 
@@ -157,7 +157,7 @@ class ContentController extends Controller
         $content->author = $request->author;
 
         if( $content->save() ){
-            return response()->json(new ContentResource( $content ), 200);
+            return response()->json(new ContentResource( $content ), 201);
         }
     }
 
